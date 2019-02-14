@@ -1,4 +1,4 @@
-DataFrame DBAPI Driver and Sqlalchemy Dialect
+Demo DataFrame DBAPI Driver and Sqlalchemy Dialect for Excel File
 ==============================
 
 Installation

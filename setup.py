@@ -25,7 +25,7 @@ setup_params = dict(
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Database :: Front-Ends',
     ],
-    keywords='Excel SQLAlchemy',
+    keywords='Excel SQLAlchemy Dialect',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,

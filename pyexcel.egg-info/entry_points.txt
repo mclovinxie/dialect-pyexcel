@@ -1,3 +1,0 @@
-[sqlalchemy.dialects]
-pyexcel = pyexcel.dialect:ExcelDialect
-

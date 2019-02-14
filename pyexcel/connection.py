@@ -10,6 +10,7 @@ from .log import logger
 
 
 class ExcelConnection(object):
+    # TODO Here should be modified
     FILE_DIR = '/vagrant'
 
     def __init__(self, username=None, password=None, host=None, database=None, **kwargs):
