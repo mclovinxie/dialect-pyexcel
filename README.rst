@@ -19,4 +19,4 @@ More info
 Authors
 -------
 
- * mclovinxie
+ * mclovinxie(https://github.com/tosakyo)
