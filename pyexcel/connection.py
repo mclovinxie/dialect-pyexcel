@@ -3,6 +3,7 @@ from __future__ import absolute_import
 import os
 
 import pandas as pd
+from sqlalchemy import types
 from ps_parser import PandasSqlParser
 
 from .cursor import ExcelCursor
@@ -37,7 +38,7 @@ class ExcelConnection(object):
 
     def list_columns(self, table_name):
         tb = self.xl.parse(table_name)
-        return [c for c in tb.columns]
+        return [{'name': str(c), 'type': types.String, 'nullable': False, 'default': None} for c in tb.columns]
 
     def table_path(self, table_name):
         return os.path.join(self.FILE_DIR, self.database, ':', table_name)

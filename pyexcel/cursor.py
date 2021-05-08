@@ -27,7 +27,7 @@ class ExcelCursor(object):
 
     def fetchone(self):
         if self.fetched_rows < self.rowcount:
-            row = self.result[self.fetched_rows]
+            row = [str(e) for e in self.result[self.fetched_rows]]
             self.fetched_rows += 1
             return row
         else:
@@ -36,15 +36,24 @@ class ExcelCursor(object):
     def fetchmany(self, size=None):
         fetched_rows = self.fetched_rows
         self.fetched_rows += size
-        return self.result[fetched_rows:self.fetched_rows]
+        rows = [self.fetchone() for _ in range(fetched_rows, self.fetched_rows)]
+        return rows
+        # return self.result[fetched_rows:self.fetched_rows]
 
     def fetchall(self):
-        fetched_rows = self.fetched_rows
+        rows = []
+        while True:
+            row = self.fetchone()
+            if not row:
+                break
+            else:
+                rows.append(row)
         self.fetched_rows = self.rowcount
-        return self.result[fetched_rows:]
+        return rows
 
     def execute(self, operation, parameters={}):
-        sql = operation % parameters
+        # sql = operation % parameters
+        sql = operation.format(**parameters)
         psp = PandasSqlParser(sql)
         table_names = set()
         for db_name, tb_name in psp.source_tables(True):
